@@ -1,0 +1,73 @@
+#include<stdio.h>
+void dij(int,int[20][20],int[20],int[20],int);
+void main()
+{
+inti,j,n,visited[20],source,cost[20][20],d[20];
+printf("Enter no. of vertices: ");
+scanf("%d",&n);
+printf("Enter the cost adjacency matrix");
+for (i=1; i <= n; i++)
+{
+for(j=1;j<=n;j++)
+{
+scanf("%d",&cost[i][j]);
+}
+}
+printf("\nEnter the source node:");
+scanf("%d", &source);
+dij(source,cost,visited,d,n);
+for (i = 1; i <= n; i++)
+{
+if(i!=source)
+printf("\nShortest path from %d to % dis %d",source,i,d[i]);
+}
+}
+void dij(int source,int cost[20][20],int visited[20],int d[20],int n)
+{
+int i,j,min,u,w;
+for(i=1; i<=n;i++)
+{
+visited[i]=0;
+d[i]=cost[source][i];
+}
+visited[source]=1;
+d[source]=0;
+for(j=2;j<=n;j++)
+{
+min =999;
+for(i=1;i<=n;i++)
+{
+if(!visited[i])
+{
+if(d[i]<min)
+{
+min=d[i];u = i;
+}
+}
+}
+visited[u]= 1;
+for(w=1;w<=n;w++)
+{
+if(cost[u][w]!=999&&visited[w] ==0)
+{
+if(d[w] >cost[u][w]+d[u])
+d[w] =cost[u][w]+d[u];
+}
+}
+}
+}
+Output:
+Enter no.of vertices:6
+Enter the cost adjacencymatrix
+9993 999 9996 5
+3 999 1 9999994
+9991 999 6 999 4
+9999996 999 8 5
+6 999999 8 9992
+5 4 4 5 2 999
+Enter the source node: 1
+Shortest path from1to 2 is 3
+Shortest path from1to 3 is 4
+Shortest path from1to 4 is10
+Shortest path from1to 5 is 6
+Shortest path from1to 6 is 5

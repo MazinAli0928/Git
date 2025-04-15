@@ -1,0 +1,42 @@
+#include<stdio.h>
+intn,a[10][10],p[10][10];
+voidpath()
+{
+int i,j,k;
+for(i=0;i<n;i++)
+for(j=0;j<n;j++)
+p[i][j]=a[i][j];
+for(k=0;k<n;k+
++)
+for(i=0;i<n;i++)
+for(j=0;j<n;j++)
+if(p[i][k]==1&&p[k][j]==1)
+p[i][j]=1;
+}
+voidmain()
+{
+inti,j;
+printf("Enterthenumberofnodes:");
+scanf("%d",&n);printf("\nEntertheadjacencymatrix:\n");for(i=0;i<n;i++)
+for(j=0;j<n;j++)
+scanf("%d",&a[i][j]);path();
+printf("\nThepathmatrixisshownbelow\n");
+for(i=0;i<n;i++)
+{
+for(j=0;j<n;j++)
+printf("%d",p[i][j]);
+printf("\n");
+}
+}
+
+
+Enterthenumberofnodes:4
+Enter the adjacency matrix:
+0100
+0010
+0001
+1000
+Thepathmatrixisshownbelow1111
+11 11
+11 11
+11 11
